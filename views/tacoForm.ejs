@@ -1,0 +1,14 @@
+<%- include('partials/header') %> 
+<h2>GET FORM</h2>
+<form method="GET" action="http://localhost:3000/tacos">
+    <input type="text" placeholder="Meat" name="meat">
+    <input type="number" placeholder="Quantity" name="qty">
+    <button>Submit</button>
+</form>
+<h2>POST FORM</h2>
+<form method="POST" action="http://localhost:3000/tacos">
+    <input type="text" placeholder="Meat" name="meat">
+    <input type="number" placeholder="Quantity" name="qty">
+    <button>Submit</button>
+</form>
+<%- include('partials/footer') %> 
