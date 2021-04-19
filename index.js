@@ -16,6 +16,30 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
 
+const comments = [
+  {
+    username: "K-LAWN",
+    content: "hmm.....that's weird....",
+  },
+  {
+    username: "JasperDav",
+    content: "I'm pumped up y'all!",
+  },
+  {
+    username: "radiantcheese",
+    content: "I wouldn't change anything about me...because I'm perfect.",
+  },
+  {
+    username: "DDR_BOI",
+    content: "do you guys wanna see my DDR shoes?",
+  },
+];
+
+app.get("/comments", (req, res) => {
+  res.render("comments/index", { comments, title: "Comments" });
+});
+
+//! TACOS EXAMPLE
 app.get("/tacos/new", (req, res) => {
   res.render("tacoForm", { title: "Taco Form" });
 });

@@ -1,0 +1,9 @@
+<!-- <% const root = '../' %>  -->
+<%- include('../partials/header') %> 
+<h1>All Comments</h1>
+<ul>
+    <% for (let comment of comments) { %> 
+        <li><%= comment.content %> - <strong><%= comment.username %></strong></li>
+    <% } %> 
+</ul>
+<%- include('../partials/footer') %> 
