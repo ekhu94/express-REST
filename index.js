@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
 
-const comments = [
+let comments = [
   {
     id: uuidv4(),
     username: "K-LAWN",
@@ -75,6 +75,12 @@ app.patch("/comments/:id", (req, res) => {
   const newComment = req.body.content;
   const findComment = comments.find((c) => c.id === id);
   findComment.content = newComment;
+  res.redirect("/comments");
+});
+
+app.delete("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  comments = comments.filter((c) => c.id !== id);
   res.redirect("/comments");
 });
 
