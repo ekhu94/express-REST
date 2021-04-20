@@ -62,6 +62,16 @@ app.post("/comments", (req, res) => {
   res.redirect("/comments");
 });
 
+app.get("/comments/:id/edit", (req, res) => {});
+
+app.patch("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const newComment = req.body.comment;
+  const findComment = comments.find((c) => c.id === id);
+  findComment.comment = newComment;
+  res.redirect("/comments");
+});
+
 //! TACOS EXAMPLE
 app.get("/tacos/new", (req, res) => {
   res.render("tacoForm", { title: "Taco Form" });
