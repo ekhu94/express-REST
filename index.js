@@ -39,6 +39,16 @@ app.get("/comments", (req, res) => {
   res.render("comments/index", { comments, title: "Comments" });
 });
 
+app.get("/comments/new", (req, res) => {
+  res.render("comments/new", { title: "New Comment" });
+});
+
+app.post("/comments", (req, res) => {
+  const { username, content } = req.body;
+  comments.push({ username, content });
+  res.send("New POST request made!");
+});
+
 //! TACOS EXAMPLE
 app.get("/tacos/new", (req, res) => {
   res.render("tacoForm", { title: "Taco Form" });

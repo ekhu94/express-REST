@@ -1,0 +1,15 @@
+<%- include('../partials/header') %> 
+<h2>Create a New Comment</h2>
+<form method="POST" action="/comments">
+    <section>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username">
+    </section>
+    <section>
+        <label for="content">Content: </label>
+        <br>
+        <textarea id="content" name="content"></textarea>
+    </section>
+    <button>Submit</button>
+</form>
+<%- include('../partials/footer') %> 
