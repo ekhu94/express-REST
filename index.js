@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -18,22 +19,22 @@ app.get("/", (req, res) => {
 
 const comments = [
   {
-    id: 1,
+    id: uuidv4(),
     username: "K-LAWN",
     content: "hmm.....that's weird....",
   },
   {
-    id: 2,
+    id: uuidv4(),
     username: "JasperDav",
     content: "I'm pumped up y'all!",
   },
   {
-    id: 3,
+    id: uuidv4(),
     username: "radiantcheese",
     content: "I wouldn't change anything about me...because I'm perfect.",
   },
   {
-    id: 4,
+    id: uuidv4(),
     username: "DDR_BOI",
     content: "do you guys wanna see my DDR shoes?",
   },
@@ -43,22 +44,21 @@ app.get("/comments", (req, res) => {
   res.render("comments/index", { comments, title: "Comments" });
 });
 
+app.get("/comments/new", (req, res) => {
+  res.render("comments/new", { title: "New Comment" });
+});
+
 app.get("/comments/:id", (req, res) => {
   const { id } = req.params;
-  const comment = comments.find((c) => c.id === parseInt(id));
+  const comment = comments.find((c) => c.id === id);
   if (comment) {
     res.render("comments/show", { title: comment.id, comment });
   }
 });
 
-app.get("/comments/new", (req, res) => {
-  res.render("comments/new", { title: "New Comment" });
-});
-
 app.post("/comments", (req, res) => {
-  const nextId = comments.length;
   const { username, content } = req.body;
-  comments.push({ id: nextId, username, content });
+  comments.push({ id: uuidv4(), username, content });
   res.redirect("/comments");
 });
 
