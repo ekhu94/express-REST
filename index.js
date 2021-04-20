@@ -46,7 +46,7 @@ app.get("/comments/new", (req, res) => {
 app.post("/comments", (req, res) => {
   const { username, content } = req.body;
   comments.push({ username, content });
-  res.send("New POST request made!");
+  res.redirect("/comments");
 });
 
 //! TACOS EXAMPLE
