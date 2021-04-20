@@ -1,0 +1,10 @@
+<%- include('../partials/header') %> 
+<h2>Edit Comment</h2>
+<form method="POST" action="/comments/<%= comment.id %>?_method=PATCH">
+    <textarea name="content" cols="30" rows="10">
+        <%= comment.content %> 
+    </textarea>
+    <button type="submit">Update Comment</button>
+</form>
+<a href="/comments">Back To Comments</a>
+<%- include('../partials/footer') %> 

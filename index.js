@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const methodOverride = require("method-override");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 
@@ -8,6 +9,7 @@ app.set("views", path.join(__dirname, "/views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.listen(3000, () => {
   console.log("Listening on Port 3000");
@@ -62,13 +64,17 @@ app.post("/comments", (req, res) => {
   res.redirect("/comments");
 });
 
-app.get("/comments/:id/edit", (req, res) => {});
+app.get("/comments/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const comment = comments.find((c) => c.id === id);
+  res.render("comments/edit", { title: "Edit Comment", comment });
+});
 
 app.patch("/comments/:id", (req, res) => {
   const { id } = req.params;
-  const newComment = req.body.comment;
+  const newComment = req.body.content;
   const findComment = comments.find((c) => c.id === id);
-  findComment.comment = newComment;
+  findComment.content = newComment;
   res.redirect("/comments");
 });
 

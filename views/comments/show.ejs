@@ -2,5 +2,6 @@
 <h2>Comment ID: <%= comment.id %> </h2>
 <h3>Author: <%= comment.username %> </h3>
 <h3><%= comment.content %> </h3>
-<a href="/comments">Back to all Comments</a>
+<a href="/comments">Back To Comments</a>
+<a href="/comments/<%= comment.id %>/edit">Edit Comment</a>
 <%- include('../partials/footer') %> 
